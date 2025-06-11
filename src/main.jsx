@@ -1,13 +1,26 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './styles/index.css'
-import App from './App.jsx'
-import { ChakraProvider } from '@chakra-ui/react'
+import React from "react"
+import ReactDOM from "react-dom/client"
+import App from "./App"
+import { ChakraProvider, extendTheme, ColorModeScript } from "@chakra-ui/react"
+import { BrowserRouter } from "react-router-dom"
+import { CalculatorProvider } from "./context/CalculatorContext"
+import "./styles/index.css"
+import "./styles/global.css"
+const config = {
+  initialColorMode: "dark", // ubah ke "dark" kalau mau
+  useSystemColorMode: false,
+}
 
-createRoot(document.getElementById('root')).render(
-  <ChakraProvider>
-    <StrictMode>
-      <App />
-    </StrictMode>
-  </ChakraProvider>,
+const theme = extendTheme({ config })
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <ChakraProvider theme={theme}>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+      <CalculatorProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </CalculatorProvider>
+    </ChakraProvider>
+  </React.StrictMode>
 )

@@ -1,5 +1,6 @@
 import {
-  Box, Select, NumberInput, NumberInputField, FormLabel, VStack, HStack, Text
+  Box, Select, NumberInput, NumberInputField,
+  FormLabel, VStack, HStack, Text, useColorModeValue
 } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import hotels from "../../data/hotels.json"
@@ -11,9 +12,11 @@ const HotelSelector = ({ onChange }) => {
   const [markupType, setMarkupType] = useState("percent")
   const [markupValue, setMarkupValue] = useState(0)
 
+  const bg = useColorModeValue("white", "gray.700")
+  const border = useColorModeValue("gray.200", "gray.600")
+
   const hotelOptions = [...new Set(hotels.map(h => h.hotelName))]
   const roomOptions = hotels.filter(h => h.hotelName === selectedHotel)
-
   const selectedData = roomOptions.find(r => r.roomType === selectedRoom)
 
   const basePrice = selectedData?.pricePerNight || 0
@@ -38,15 +41,30 @@ const HotelSelector = ({ onChange }) => {
   }, [selectedHotel, selectedRoom, nights, markupType, markupValue])
 
   return (
-    <Box p={4} borderWidth="1px" rounded="xl" shadow="md">
-      <Text fontSize="xl" mb={2} fontWeight="bold">Pilih Hotel</Text>
+    <Box
+      p={6}
+      borderWidth="1px"
+      borderColor={border}
+      borderRadius="lg"
+      shadow="md"
+      bg={bg}
+      mt={4}
+    >
+      <Text fontSize="xl" fontWeight="bold" mb={4}>
+        🏨 Pilih Hotel
+      </Text>
+
       <VStack spacing={4} align="stretch">
         <Box>
           <FormLabel>Nama Hotel</FormLabel>
-          <Select placeholder="Pilih hotel" onChange={(e) => {
-            setSelectedHotel(e.target.value)
-            setSelectedRoom("")
-          }}>
+          <Select
+            placeholder="Pilih hotel"
+            value={selectedHotel}
+            onChange={(e) => {
+              setSelectedHotel(e.target.value)
+              setSelectedRoom("")
+            }}
+          >
             {hotelOptions.map((hotel, idx) => (
               <option key={idx} value={hotel}>{hotel}</option>
             ))}
@@ -57,6 +75,7 @@ const HotelSelector = ({ onChange }) => {
           <FormLabel>Tipe Kamar</FormLabel>
           <Select
             placeholder="Pilih tipe kamar"
+            value={selectedRoom}
             onChange={(e) => setSelectedRoom(e.target.value)}
             isDisabled={!selectedHotel}
           >
@@ -75,7 +94,7 @@ const HotelSelector = ({ onChange }) => {
 
         <Box>
           <FormLabel>Markup</FormLabel>
-          <HStack>
+          <HStack spacing={3}>
             <Select w="40%" value={markupType} onChange={(e) => setMarkupType(e.target.value)}>
               <option value="percent">%</option>
               <option value="fixed">Rp</option>
@@ -87,9 +106,12 @@ const HotelSelector = ({ onChange }) => {
         </Box>
 
         {selectedRoom && (
-          <Text mt={4} fontWeight="semibold">
-            Total Harga Jual: Rp {totalPrice.toLocaleString()}
-          </Text>
+          <Box mt={4} bg="gray.600" color="white" px={4} py={2} rounded="md">
+            <Text fontWeight="medium">Total Harga Jual</Text>
+            <Text fontSize="lg" fontWeight="bold">
+              Rp {totalPrice.toLocaleString("id-ID")}
+            </Text>
+          </Box>
         )}
       </VStack>
     </Box>
