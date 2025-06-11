@@ -83,7 +83,7 @@ src/
 ```
 ### Cara Menjalankan
 1. Clone Repo:
-git clone https://github.com/namamu/kalkulator-paket-wisata.git
+git clone https://github.com/TeguhPermana666/kalkulator-paket-wisata.git
 cd kalkulator-paket-wisata
 
 2. Install Dependecies
