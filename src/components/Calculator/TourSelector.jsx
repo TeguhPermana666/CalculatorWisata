@@ -1,53 +1,64 @@
 import {
-  Box, Button, FormLabel, HStack, Input, NumberInput, NumberInputField,
+  Box, Button, FormLabel, HStack, NumberInput, NumberInputField,
   Select, Text, VStack, IconButton, useColorModeValue
 } from "@chakra-ui/react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { DeleteIcon } from "@chakra-ui/icons"
 import tourData from "../../data/tours.json"
+import { calculateFinalPrice } from "../../utils/priceCalculator"
 
 const TourSelector = ({ onChange }) => {
   const [items, setItems] = useState([])
+
   const [input, setInput] = useState({
     tourName: "",
-    participants: 2,
+    category: "domestic", // atau "foreign"
+    adult: 2,
+    child: 0,
     markupType: "percent",
     markupValue: 0,
   })
 
   const selectedTour = tourData.find(t => t.name === input.tourName)
-  const basePrice = selectedTour?.price || 0
-  const totalBase = basePrice * input.participants
+  const adultPrice = selectedTour?.[input.category]?.adult || 0
+  const childPrice = selectedTour?.[input.category]?.child || 0
+  const basePrice = (adultPrice * input.adult) + (childPrice * input.child)
 
-  const markup = input.markupType === "percent"
-    ? (totalBase * input.markupValue) / 100
-    : input.markupValue
-
-  const finalPrice = totalBase + markup
+  const finalPrice = calculateFinalPrice(basePrice, input.markupType, input.markupValue)
 
   const bg = useColorModeValue("white", "gray.700")
   const border = useColorModeValue("gray.200", "gray.600")
   const textMuted = useColorModeValue("gray.600", "gray.400")
 
   const handleAdd = () => {
-    if (!input.tourName || input.participants <= 0) return
+    if (!input.tourName || input.adult + input.child <= 0) return
 
     const newItem = {
       ...input,
-      basePrice: totalBase,
+      basePrice,
       finalPrice,
     }
+
     const updated = [...items, newItem]
     setItems(updated)
-    setInput({ tourName: "", participants: 2, markupType: "percent", markupValue: 0 })
-    onChange && onChange(updated)
+    setInput({
+      tourName: "",
+      category: "domestic",
+      adult: 2,
+      child: 0,
+      markupType: "percent",
+      markupValue: 0,
+    })
   }
 
   const handleDelete = (index) => {
     const updated = items.filter((_, i) => i !== index)
     setItems(updated)
-    onChange && onChange(updated)
   }
+
+  useEffect(() => {
+    onChange?.(items)
+  }, [items])
 
   return (
     <Box p={6} borderWidth="1px" borderRadius="lg" shadow="md" bg={bg} borderColor={border} mt={6}>
@@ -68,11 +79,30 @@ const TourSelector = ({ onChange }) => {
         </Box>
 
         <Box>
-          <FormLabel>Jumlah Peserta</FormLabel>
-          <NumberInput min={1} value={input.participants} onChange={(_, val) => setInput({ ...input, participants: val })}>
-            <NumberInputField />
-          </NumberInput>
+          <FormLabel>Kategori Wisatawan</FormLabel>
+          <Select
+            value={input.category}
+            onChange={(e) => setInput({ ...input, category: e.target.value })}
+          >
+            <option value="domestic">Domestik</option>
+            <option value="foreign">Mancanegara</option>
+          </Select>
         </Box>
+
+        <HStack spacing={4}>
+          <Box>
+            <FormLabel>Dewasa</FormLabel>
+            <NumberInput min={0} value={input.adult} onChange={(_, val) => setInput({ ...input, adult: val })}>
+              <NumberInputField />
+            </NumberInput>
+          </Box>
+          <Box>
+            <FormLabel>Anak</FormLabel>
+            <NumberInput min={0} value={input.child} onChange={(_, val) => setInput({ ...input, child: val })}>
+              <NumberInputField />
+            </NumberInput>
+          </Box>
+        </HStack>
 
         <Box>
           <FormLabel>Markup</FormLabel>
@@ -87,32 +117,43 @@ const TourSelector = ({ onChange }) => {
           </HStack>
         </Box>
 
+        <Box>
+          <Text fontWeight="semibold">Total Harga:</Text>
+          <Text fontSize="lg" fontWeight="bold">Rp {finalPrice.toLocaleString("id-ID")}</Text>
+        </Box>
+
         <Button colorScheme="blue" onClick={handleAdd}>Tambah Paket</Button>
 
         {items.length > 0 && (
           <Box pt={4}>
             <Text fontWeight="semibold" mb={2}>Daftar Paket:</Text>
-            {items.map((item, idx) => (
-              <Box key={idx} p={3} rounded="md" bg={useColorModeValue("gray.100", "gray.800")} mb={2}>
-                <HStack justify="space-between">
-                  <Box>
-                    <Text fontWeight="medium">{item.tourName}</Text>
-                    <Text fontSize="sm" color={textMuted}>
-                      {item.participants} peserta x Rp {selectedTour?.price?.toLocaleString("id-ID") || 0} = Rp {item.basePrice.toLocaleString("id-ID")}<br />
-                      Markup: {item.markupType === "percent" ? `${item.markupValue}%` : `Rp ${item.markupValue.toLocaleString("id-ID")}`}<br />
-                      <strong>Total: Rp {item.finalPrice.toLocaleString("id-ID")}</strong>
-                    </Text>
-                  </Box>
-                  <IconButton
-                    icon={<DeleteIcon />}
-                    size="sm"
-                    colorScheme="red"
-                    aria-label="hapus"
-                    onClick={() => handleDelete(idx)}
-                  />
-                </HStack>
-              </Box>
-            ))}
+            {items.map((item, idx) => {
+              const pricePerAdult = tourData.find(t => t.name === item.tourName)?.[item.category]?.adult || 0
+              const pricePerChild = tourData.find(t => t.name === item.tourName)?.[item.category]?.child || 0
+
+              return (
+                <Box key={idx} p={3} rounded="md" bg={useColorModeValue("gray.100", "gray.800")} mb={2}>
+                  <HStack justify="space-between">
+                    <Box>
+                      <Text fontWeight="medium">{item.tourName} ({item.category})</Text>
+                      <Text fontSize="sm" color={textMuted}>
+                        {item.adult} dewasa x Rp {pricePerAdult.toLocaleString("id-ID")}<br />
+                        {item.child} anak x Rp {pricePerChild.toLocaleString("id-ID")}<br />
+                        Markup: {item.markupType === "percent" ? `${item.markupValue}%` : `Rp ${item.markupValue.toLocaleString("id-ID")}`}<br />
+                        <strong>Total: Rp {item.finalPrice.toLocaleString("id-ID")}</strong>
+                      </Text>
+                    </Box>
+                    <IconButton
+                      icon={<DeleteIcon />}
+                      size="sm"
+                      colorScheme="red"
+                      aria-label="hapus"
+                      onClick={() => handleDelete(idx)}
+                    />
+                  </HStack>
+                </Box>
+              )
+            })}
           </Box>
         )}
       </VStack>

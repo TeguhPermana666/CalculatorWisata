@@ -1,6 +1,7 @@
 import {
-  Box, Table, Thead, Tbody, Tr, Th, Td, Text, useColorModeValue
+  Box, Table, Thead, Tbody, Tr, Th, Td, Text, useColorModeValue, Spinner
 } from "@chakra-ui/react"
+import { calculateFinalPrice } from "../../utils/priceCalculator"
 
 const formatRp = (val) => {
   if (!val || isNaN(val)) return "Rp 0"
@@ -8,45 +9,73 @@ const formatRp = (val) => {
 }
 
 const PriceBreakdownTable = ({ hotel, villa, tours = [], extras = [] }) => {
+  const hasValidHotel = hotel && typeof hotel === "object" && hotel.basePrice != null
+  const hasValidVilla = villa && typeof villa === "object" && villa.basePrice != null
+
+  const isLoading = !hasValidHotel && !hasValidVilla && tours.length === 0 && extras.length === 0
+
+  if (isLoading) {
+    return (
+      <Box mt={8} textAlign="center">
+        <Spinner size="lg" />
+        <Text mt={2}>Memuat data...</Text>
+      </Box>
+    )
+  }
+
   const rows = []
 
-  if (hotel) {
+  if (hasValidHotel) {
+    const base = hotel.basePrice * (hotel.nights || 1)
+    const final = hotel.totalPrice ?? calculateFinalPrice(base, hotel.markupType, hotel.markupValue)
+
     rows.push({
       type: "Hotel",
       name: hotel.hotelName || hotel.label,
-      base: hotel.basePrice * (hotel.nights || 1),
-      markup: hotel.markupType === "percent" ? `${hotel.markupValue}%` : formatRp(hotel.markupValue),
-      final: hotel.totalPrice,
+      base,
+      markup: hotel.markupType === "percent"
+        ? `${hotel.markupValue}%`
+        : formatRp(hotel.markupValue),
+      final,
     })
   }
 
-  if (villa) {
+  if (hasValidVilla) {
+    const base = villa.basePrice * (villa.nights || 1)
+    const final = villa.totalPrice ?? calculateFinalPrice(base, villa.markupType, villa.markupValue)
+
     rows.push({
       type: "Villa",
       name: villa.villaName || villa.label,
-      base: villa.basePrice * (villa.nights || 1),
-      markup: villa.markupType === "percent" ? `${villa.markupValue}%` : formatRp(villa.markupValue),
-      final: villa.totalPrice,
+      base,
+      markup: villa.markupType === "percent"
+        ? `${villa.markupValue}%`
+        : formatRp(villa.markupValue),
+      final,
     })
   }
 
   tours.forEach(t => {
+    const final = t.finalPrice ?? calculateFinalPrice(t.basePrice, t.markupType, t.markupValue)
+
     rows.push({
       type: "Tour",
       name: t.tourName,
       base: t.basePrice,
       markup: t.markupType === "percent" ? `${t.markupValue}%` : formatRp(t.markupValue),
-      final: t.finalPrice,
+      final,
     })
   })
 
   extras.forEach(e => {
+    const final = e.finalPrice ?? calculateFinalPrice(e.basePrice, e.markupType, e.markupValue)
+
     rows.push({
       type: "Extra",
       name: e.label,
       base: e.basePrice,
       markup: e.markupType === "percent" ? `${e.markupValue}%` : formatRp(e.markupValue),
-      final: e.finalPrice,
+      final,
     })
   })
 

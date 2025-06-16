@@ -1,7 +1,8 @@
-import { createContext, useContext, useState, useEffect } from "react"
+import { createContext, useState, useEffect, useRef } from "react"
 import { useLocalStorage } from "../hooks/useLocalStorage"
+import { calculateFinalPrice } from "../utils/priceCalculator"
 
-const CalculatorContext = createContext()
+export const CalculatorContext = createContext()
 
 export const CalculatorProvider = ({ children }) => {
   const [savedState, setSavedState] = useLocalStorage("calc_data", null)
@@ -11,20 +12,55 @@ export const CalculatorProvider = ({ children }) => {
   const [tours, setTours] = useState([])
   const [extras, setExtras] = useState([])
 
-  // Load saved data
+  const hasLoaded = useRef(false)
+
+  // Load data from localStorage once
   useEffect(() => {
-    if (savedState) {
+    if (savedState && !hasLoaded.current) {
       setHotel(savedState.hotel || null)
       setVilla(savedState.villa || null)
-      setTours(savedState.tours || [])
-      setExtras(savedState.extras || [])
+      setTours(Array.isArray(savedState.tours) ? savedState.tours : [])
+      setExtras(Array.isArray(savedState.extras) ? savedState.extras : [])
+      hasLoaded.current = true
     }
-  }, [])
+  }, [savedState])
 
-  // Save on every change
+  // Save state to localStorage when changed
   useEffect(() => {
-    setSavedState({ hotel, villa, tours, extras })
+    if (hasLoaded.current) {
+      setSavedState({ hotel, villa, tours, extras })
+    }
   }, [hotel, villa, tours, extras])
+
+  // Update hotel (with calculated total)
+  const updateHotel = (data) => {
+    const base = data.basePrice * (data.nights || 1)
+    setHotel({
+      ...data,
+      totalPrice: calculateFinalPrice(base, data.markupType, data.markupValue),
+    })
+  }
+
+  // Update villa (with calculated total)
+  const updateVilla = (data) => {
+    const base = data.basePrice * (data.nights || 1)
+    setVilla({
+      ...data,
+      totalPrice: calculateFinalPrice(base, data.markupType, data.markupValue),
+    })
+  }
+
+  // ✅ Update tour list (langsung replace array)
+  const updateTours = (newTours) => {
+    setTours(newTours)
+  }
+
+  // ✅ (Opsional) Tambah/remove tour manual
+  const addTour = (tour) => setTours((prev) => [...prev, tour])
+  const removeTour = (index) => setTours((prev) => prev.filter((_, i) => i !== index))
+
+  const addExtra = (extra) => setExtras((prev) => [...prev, extra])
+  const removeExtra = (index) => setExtras((prev) => prev.filter((_, i) => i !== index))
 
   const resetAll = () => {
     setHotel(null)
@@ -44,13 +80,10 @@ export const CalculatorProvider = ({ children }) => {
     <CalculatorContext.Provider
       value={{
         hotel, villa, tours, extras,
-        setHotel, setVilla, setTours, setExtras,
-        updateHotel: setHotel,
-        updateVilla: setVilla,
-        addTour: (t) => setTours((prev) => [...prev, t]),
-        removeTour: (i) => setTours((prev) => prev.filter((_, idx) => idx !== i)),
-        addExtra: (e) => setExtras((prev) => [...prev, e]),
-        removeExtra: (i) => setExtras((prev) => prev.filter((_, idx) => idx !== i)),
+        updateHotel, updateVilla, updateTours,
+        setTours, setExtras,
+        addTour, removeTour,
+        addExtra, removeExtra,
         totalPrice,
         resetAll,
       }}
@@ -59,5 +92,3 @@ export const CalculatorProvider = ({ children }) => {
     </CalculatorContext.Provider>
   )
 }
-
-export const useCalculator = () => useContext(CalculatorContext)

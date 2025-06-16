@@ -1,7 +1,7 @@
 import { Box, Heading, Text, VStack, Divider } from "@chakra-ui/react"
 import { useRef } from "react"
 import { useReactToPrint } from "react-to-print"
-import { useCalculator } from "../context/CalculatorContext"
+import useCalculator from "../hooks/useCalculator"
 import CurrencyDisplay from "../components/ui/CurrencyDisplay"
 
 const PrintPreview = () => {
