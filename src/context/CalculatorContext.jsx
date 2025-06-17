@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect, useRef } from "react"
 import { useLocalStorage } from "../hooks/useLocalStorage"
-import { calculateFinalPrice } from "../utils/priceCalculator"
 
 export const CalculatorContext = createContext()
 

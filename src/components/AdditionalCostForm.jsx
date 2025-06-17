@@ -32,7 +32,7 @@ const AdditionalCostForm = ({ onChange }) => {
 
     const updated = [...items, newItem]
     setItems(updated)
-    addExtra(newItem) // ✅ Sync to context
+    addExtra(newItem) 
     setInput({ label: "", basePrice: 0, markupType: "percent", markupValue: 0 })
     onChange?.(updated)
   }
@@ -40,7 +40,7 @@ const AdditionalCostForm = ({ onChange }) => {
   const handleDelete = (index) => {
     const updated = items.filter((_, i) => i !== index)
     setItems(updated)
-    removeExtra(index) // ✅ Remove from context
+    removeExtra(index) 
     onChange?.(updated)
   }
 
@@ -50,7 +50,7 @@ const AdditionalCostForm = ({ onChange }) => {
 
   return (
     <Box p={4} borderWidth="1px" borderColor={borderColor} rounded="xl" shadow="md" mt={6} bg={boxBg}>
-      <Text fontSize="xl" mb={2} fontWeight="bold">➕ Tambahan Biaya (Opsional)</Text>
+      <Text fontSize="xl" mb={2} fontWeight="bold">Tambahan Biaya (Opsional)</Text>
 
       <VStack spacing={4} align="stretch">
         <Box>

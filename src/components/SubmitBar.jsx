@@ -8,7 +8,7 @@ const SubmitBar = ({ onReset }) => {
     hotels, villas, tours, extras, totalPrice, resetAll
   } = useCalculator()
 
-  const toast = useToast() // ✅ Fix: Tambahkan toast hook
+  const toast = useToast()
 
   const isEmpty =
     hotels.length === 0 &&
@@ -34,7 +34,7 @@ const SubmitBar = ({ onReset }) => {
       localStorage.setItem("calc_history", JSON.stringify(updated))
 
       toast({
-        title: "✅ Disimpan ke Riwayat.",
+        title: "Disimpan ke Riwayat.",
         description: "Simulasi berhasil disimpan.",
         status: "success",
         duration: 3000,
@@ -43,7 +43,7 @@ const SubmitBar = ({ onReset }) => {
     } catch (e) {
       if (e.name === "QuotaExceededError" || e.code === 22) {
         toast({
-          title: "⚠️ Penyimpanan penuh!",
+          title: "Penyimpanan penuh!",
           description: "LocalStorage penuh. Silakan hapus beberapa riwayat.",
           status: "error",
           duration: 5000,
@@ -51,7 +51,7 @@ const SubmitBar = ({ onReset }) => {
         })
       } else {
         toast({
-          title: "❌ Gagal menyimpan.",
+          title: "Gagal menyimpan.",
           description: "Terjadi kesalahan tidak terduga.",
           status: "error",
           duration: 4000,

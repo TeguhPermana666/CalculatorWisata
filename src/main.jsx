@@ -7,7 +7,7 @@ import { CalculatorProvider } from "./context/CalculatorContext"
 import "./styles/index.css"
 import "./styles/global.css"
 const config = {
-  initialColorMode: "dark", // ubah ke "dark" kalau mau
+  initialColorMode: "dark", // dark default
   useSystemColorMode: false,
 }
 

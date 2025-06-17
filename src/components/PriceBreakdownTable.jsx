@@ -67,7 +67,7 @@ const PriceBreakdownTable = ({ hotels = [], villas = [], tours = [], extras = []
   return (
     <Box mt={8} borderWidth="1px" borderRadius="lg" overflowX="auto" borderColor={borderColor}>
       <Box p={4} bg={tableBg} borderBottomWidth="1px" borderColor={borderColor}>
-        <Text fontSize="xl" fontWeight="bold">📊 Rincian Harga</Text>
+        <Text fontSize="xl" fontWeight="bold">Rincian Harga</Text>
       </Box>
       <Table variant="simple" size="sm">
         <Thead bg={headerBg}>
