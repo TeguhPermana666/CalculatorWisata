@@ -1,26 +1,41 @@
-export const generateWhatsAppMessage = ({ hotel, villa, tours, extras, total }) => {
+export const generateWhatsAppMessage = ({ hotels = [], villas = [], tours = [], extras = [], total }) => {
   let lines = []
 
-  if (hotel) {
-    lines.push(`🏨 Hotel: ${hotel.name} – ${hotel.nights} malam – Rp ${hotel.totalPrice.toLocaleString("id-ID")}`)
+  if (hotels.length > 0) {
+    lines.push("# *Hotel*")
+    hotels.forEach((h, i) => {
+      lines.push(`${i + 1}. ${h.hotelName} – ${h.nights} malam – Rp ${h.totalPrice.toLocaleString("id-ID")}`)
+    })
+    lines.push("") // newline
   }
 
-  if (villa) {
-    lines.push(`🏡 Villa: ${villa.name} – ${villa.nights} malam – Rp ${villa.totalPrice.toLocaleString("id-ID")}`)
+  if (villas.length > 0) {
+    lines.push("# *Villa*")
+    villas.forEach((v, i) => {
+      lines.push(`${i + 1}. ${v.villaName} – ${v.nights} malam – Rp ${v.totalPrice.toLocaleString("id-ID")}`)
+    })
+    lines.push("")
   }
 
-  tours.forEach((t, i) => {
-    lines.push(`🗺️ Tour ${i + 1}: ${t.name} – Rp ${t.finalPrice.toLocaleString("id-ID")}`)
-  })
+  if (tours.length > 0) {
+    lines.push("# *Tour*")
+    tours.forEach((t, i) => {
+      lines.push(`${i + 1}. ${t.tourName} – Rp ${t.finalPrice.toLocaleString("id-ID")}`)
+    })
+    lines.push("")
+  }
 
-  extras.forEach((e, i) => {
-    lines.push(`➕ Biaya Tambahan ${i + 1}: ${e.label} – Rp ${e.finalPrice.toLocaleString("id-ID")}`)
-  })
+  if (extras.length > 0) {
+    lines.push("# *Biaya Tambahan*")
+    extras.forEach((e, i) => {
+      lines.push(`${i + 1}. ${e.label} – Rp ${e.finalPrice.toLocaleString("id-ID")}`)
+    })
+    lines.push("")
+  }
 
-  lines.push("")
-  lines.push(`💰 *Total*: Rp ${total.toLocaleString("id-ID")}`)
+  lines.push(`# *Total Keseluruhan*: Rp ${total.toLocaleString("id-ID")}`)
   lines.push("")
   lines.push("Silakan konfirmasi untuk booking. Terima kasih!")
 
-  return encodeURIComponent(lines.join("\n"))
+  return lines.join("\n")
 }

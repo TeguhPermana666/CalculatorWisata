@@ -4,8 +4,8 @@ import {
 } from "@chakra-ui/react"
 import { DeleteIcon } from "@chakra-ui/icons"
 import { useEffect, useMemo, useState } from "react"
-import hotels from "../../data/hotels.json"
-import villas from "../../data/villas.json"
+import hotels from "../data/hotels.json"
+import villas from "../data/villas.json"
 
 const AccommodationSelector = ({ onHotelChange, onVillaChange }) => {
   const [type, setType] = useState("hotel")
@@ -101,8 +101,13 @@ const AccommodationSelector = ({ onHotelChange, onVillaChange }) => {
   }
 
   useEffect(() => {
+    onHotelChange?.(hotelItems)
+  }, [hotelItems])
+
+  useEffect(() => {
     onVillaChange?.(villaItems)
   }, [villaItems])
+
 
   return (
     <Box bg={bg} p={6} mt={6} borderWidth="1px" borderColor={border} borderRadius="lg" shadow="md">

@@ -8,16 +8,16 @@ import {
 } from "@chakra-ui/react"
 import { CalculatorProvider } from "../context/CalculatorContext"
 import useCalculator from "../hooks/useCalculator"
-import AccommodationSelector from "../components/ui/AccommodationSelector"
-import TourSelector from "../components/Calculator/TourSelector"
-import AdditionalCostForm from "../components/Calculator/AdditionalCostForm"
-import PriceBreakdownTable from "../components/Calculator/PriceBreakdownTable"
-import SubmitBar from "../components/Calculator/SubmitBar"
+import AccommodationSelector from "../components/AccommodationSelector"
+import TourSelector from "../components/TourSelector"
+import AdditionalCostForm from "../components/AdditionalCostForm"
+import PriceBreakdownTable from "../components/PriceBreakdownTable"
+import SubmitBar from "../components/SubmitBar"
 
 const CalculatorContent = () => {
   const {
-    hotel, villa, tours, extras,
-    updateHotel, updateVilla,
+    hotels, villas, tours, extras,
+    updateHotels, updateVillas,
     addTour, removeTour,
     addExtra, removeExtra,
     resetAll, totalPrice
@@ -34,8 +34,9 @@ const CalculatorContent = () => {
       isClosable: true
     })
     console.log({
-      hotel, villa, tours, extras, total: totalPrice
+      hotels, villas, tours, extras, total: totalPrice
     })
+
   }
 
   const bg = useColorModeValue("white", "gray.800")
@@ -49,12 +50,18 @@ const CalculatorContent = () => {
 
         <VStack spacing={10} align="stretch" width="100%">
           <AccommodationSelector
-            onHotelChange={updateHotel}
-            onVillaChange={updateVilla}
+            onHotelChange={updateHotels}
+            onVillaChange={updateVillas}
           />
           <TourSelector onAdd={addTour} onRemove={removeTour} />
           <AdditionalCostForm onAdd={addExtra} onRemove={removeExtra} />
-          <PriceBreakdownTable />
+          <PriceBreakdownTable
+            hotels={hotels}
+            villas={villas}
+            tours={tours}
+            extras={extras}
+          />
+
         </VStack>
       </Container>
 

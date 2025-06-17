@@ -2,8 +2,9 @@ import {
   Box, Button, FormLabel, HStack, Input, NumberInput, NumberInputField,
   Select, Text, VStack, IconButton, useColorModeValue
 } from "@chakra-ui/react"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { DeleteIcon } from "@chakra-ui/icons"
+import { CalculatorContext } from "../context/CalculatorContext"
 
 const AdditionalCostForm = ({ onChange }) => {
   const [items, setItems] = useState([])
@@ -14,11 +15,10 @@ const AdditionalCostForm = ({ onChange }) => {
     markupValue: 0,
   })
 
+  const { addExtra, removeExtra } = useContext(CalculatorContext)
+
   const calculateFinalPrice = ({ basePrice, markupType, markupValue }) => {
-    const markup =
-      markupType === "percent"
-        ? (basePrice * markupValue) / 100
-        : markupValue
+    const markup = markupType === "percent" ? (basePrice * markupValue) / 100 : markupValue
     return basePrice + markup
   }
 
@@ -29,16 +29,19 @@ const AdditionalCostForm = ({ onChange }) => {
       ...input,
       finalPrice: calculateFinalPrice(input),
     }
+
     const updated = [...items, newItem]
     setItems(updated)
+    addExtra(newItem) // ✅ Sync to context
     setInput({ label: "", basePrice: 0, markupType: "percent", markupValue: 0 })
-    onChange && onChange(updated)
+    onChange?.(updated)
   }
 
   const handleDelete = (index) => {
     const updated = items.filter((_, i) => i !== index)
     setItems(updated)
-    onChange && onChange(updated)
+    removeExtra(index) // ✅ Remove from context
+    onChange?.(updated)
   }
 
   const boxBg = useColorModeValue("white", "gray.800")
@@ -61,7 +64,7 @@ const AdditionalCostForm = ({ onChange }) => {
 
         <Box>
           <FormLabel>Harga Modal</FormLabel>
-          <NumberInput min={0} value={input.basePrice} onChange={(_, val) => setInput({ ...input, basePrice: val })}>
+          <NumberInput min={0} value={input.basePrice} onChange={(_, val) => setInput({ ...input, basePrice: val || 0 })}>
             <NumberInputField />
           </NumberInput>
         </Box>
@@ -73,15 +76,13 @@ const AdditionalCostForm = ({ onChange }) => {
               <option value="percent">%</option>
               <option value="fixed">Rp</option>
             </Select>
-            <NumberInput min={0} value={input.markupValue} onChange={(_, val) => setInput({ ...input, markupValue: val })}>
+            <NumberInput min={0} value={input.markupValue} onChange={(_, val) => setInput({ ...input, markupValue: val || 0 })}>
               <NumberInputField />
             </NumberInput>
           </HStack>
         </Box>
 
-        <Button colorScheme="teal" onClick={handleAdd}>
-          Tambah Item
-        </Button>
+        <Button colorScheme="teal" onClick={handleAdd}>Tambah Item</Button>
 
         {items.length > 0 && (
           <Box pt={4}>
