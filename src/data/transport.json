@@ -1,0 +1,806 @@
+[
+  {
+    "id": 1,
+    "jenisKendaraan": "Toyota Hiace  14 seat Th 2022",
+    "keterangan": {
+      "fullDay": [
+        {
+          "area": "Kintamani/Uluwatu/Nusa Penida",
+          "price": 1100000
+        },
+        {
+          "area": "Bedugul-Tanah Lot",
+          "price": 1100000
+        },
+        {
+          "area": "Lempuyang",
+          "price": 1500000
+        },
+        {
+          "area": "Bedugul-Tanah Lot + Lovina",
+          "price": 1500000
+        },
+        {
+          "area": "Kintamani + Lempuyang",
+          "price": 1500000
+        }
+      ],
+      "halfDay": [
+        {
+          "area": "City Tour/Dinner Ubud/ Blayu",
+          "price": 850000
+        }
+      ],
+      "inOut": [
+        {
+          "area": "Kuta/Tuban",
+          "price": 550000
+        },
+        {
+          "area": "Sanur/Nusa Dua/Jimbaran/Dps/Seminyak",
+          "price": 600000
+        },
+        {
+          "area": "Munggu/ Canggu/Tanah Lot/Ubud/ Pecatu",
+          "price": 650000
+        },
+        {
+          "area": "Candidasa/ Padang Bay/Padma Ubud Hotel",
+          "price": 1000000
+        },
+        {
+          "area": "Lovina/ Tulamben",
+          "price": 1300000
+        },
+        {
+          "area": "Gilimanuk/ Jembrana/ Amed",
+          "price": 1400000
+        }
+      ],
+      "tripBali": [
+        {
+          "area": "Trip Bali Area( Menginap)",
+          "price": 1700000
+        }
+      ]
+    },
+    "vendor": "PESONA AWAN"
+  },
+  {
+    "id": 2,
+    "jenisKendaraan": "Bus MD 31 seat - 35 seat Th 2018",
+    "keterangan": {
+      "fullDay": [
+        {
+          "area": "Kintamani/Uluwatu/Nusa Penida",
+          "price": 1500000
+        },
+        {
+          "area": "Bedugul-Tanah Lot",
+          "price": 1500000
+        },
+        {
+          "area": "Lempuyang",
+          "price": 2000000
+        },
+        {
+          "area": "Bedugul-Tanah Lot + Lovina",
+          "price": 2000000
+        },
+        {
+          "area": "Kintamani + Lempuyang",
+          "price": 2000000
+        }
+      ],
+      "halfDay": [
+        {
+          "area": "City Tour/Dinner Ubud/ Blayu",
+          "price": 1100000
+        }
+      ],
+      "inOut": [
+        {
+          "area": "Kuta/Tuban",
+          "price": 800000
+        },
+        {
+          "area": "Sanur/Nusa Dua/Jimbaran/Dps/Seminyak",
+          "price": 850000
+        },
+        {
+          "area": "Munggu/ Canggu/Tanah Lot/Ubud/ Pecatu",
+          "price": 900000
+        },
+        {
+          "area": "Candidasa/ Padang Bay/Padma Ubud Hotel",
+          "price": 1400000
+        },
+        {
+          "area": "Lovina/ Tulamben",
+          "price": 1700000
+        },
+        {
+          "area": "Gilimanuk/ Jembrana/ Amed",
+          "price": 1800000
+        }
+      ],
+      "tripBali": [
+        {
+          "area": "Trip Bali Area( Menginap)",
+          "price": 2200000
+        }
+      ]
+    },
+    "vendor": "PESONA AWAN"
+  },
+  {
+    "id": 3,
+    "jenisKendaraan": "Bus MD 31 seat - 35 seat Th 2024",
+    "keterangan": {
+      "fullDay": [
+        {
+          "area": "Kintamani/Uluwatu/Nusa Penida",
+          "price": 1800000
+        },
+        {
+          "area": "Bedugul-Tanah Lot",
+          "price": 1800000
+        },
+        {
+          "area": "Lempuyang",
+          "price": 2100000
+        },
+        {
+          "area": "Bedugul-Tanah Lot + Lovina",
+          "price": 2100000
+        },
+        {
+          "area": "Kintamani + Lempuyang",
+          "price": 2100000
+        }
+      ],
+      "halfDay": [
+        {
+          "area": "City Tour/Dinner Ubud/ Blayu",
+          "price": 1500000
+        }
+      ],
+      "inOut": [
+        {
+          "area": "Kuta/Tuban",
+          "price": 900000
+        },
+        {
+          "area": "Sanur/Nusa Dua/Jimbaran/Dps/Seminyak",
+          "price": 950000
+        },
+        {
+          "area": "Munggu/ Canggu/Tanah Lot/Ubud/ Pecatu",
+          "price": 1000000
+        },
+        {
+          "area": "Candidasa/ Padang Bay/Padma Ubud Hotel",
+          "price": 1500000
+        },
+        {
+          "area": "Lovina/ Tulamben",
+          "price": 1800000
+        },
+        {
+          "area": "Gilimanuk/ Jembrana/ Amed",
+          "price": 1900000
+        }
+      ],
+      "tripBali": [
+        {
+          "area": "Trip Bali Area( Menginap)",
+          "price": 2300000
+        }
+      ]
+    },
+    "vendor": "PESONA AWAN"
+  },
+  {
+    "id": 4,
+    "jenisKendaraan": "Bus MD 41 seat Th 2024",
+    "keterangan": {
+      "fullDay": [
+        {
+          "area": "Kintamani/Uluwatu/Nusa Penida",
+          "price": 2100000
+        },
+        {
+          "area": "Bedugul-Tanah Lot",
+          "price": 2100000
+        },
+        {
+          "area": "Lempuyang",
+          "price": 2500000
+        },
+        {
+          "area": "Bedugul-Tanah Lot + Lovina",
+          "price": 2500000
+        },
+        {
+          "area": "Kintamani + Lempuyang",
+          "price": 2500000
+        }
+      ],
+      "halfDay": [
+        {
+          "area": "City Tour/Dinner Ubud/ Blayu",
+          "price": 1700000
+        }
+      ],
+      "inOut": [
+        {
+          "area": "Kuta/Tuban",
+          "price": 1100000
+        },
+        {
+          "area": "Sanur/Nusa Dua/Jimbaran/Dps/Seminyak",
+          "price": 1200000
+        },
+        {
+          "area": "Munggu/ Canggu/Tanah Lot/Ubud/ Pecatu",
+          "price": 1500000
+        },
+        {
+          "area": "Candidasa/ Padang Bay/Padma Ubud Hotel",
+          "price": 1700000
+        },
+        {
+          "area": "Lovina/ Tulamben",
+          "price": 2000000
+        },
+        {
+          "area": "Gilimanuk/ Jembrana/ Amed",
+          "price": 2500000
+        }
+      ],
+      "tripBali": [
+        {
+          "area": "Trip Bali Area( Menginap)",
+          "price": 3000000
+        }
+      ]
+    },
+    "vendor": "PESONA AWAN"
+  },
+  {
+    "id": 5,
+    "jenisKendaraan": "Bus MBO 29 seat",
+    "keterangan": {
+      "fullDay": [
+        {
+          "area": "Kintamani/Uluwatu/Nusa Penida",
+          "price": 1350000
+        },
+        {
+          "area": "Bedugul-Tanah Lot",
+          "price": 1600000
+        },
+        {
+          "area": "Lempuyang",
+          "price": 1600000
+        },
+        {
+          "area": "Bedugul-Tanah Lot + Lovina",
+          "price": 1650000
+        },
+        {
+          "area": "Kintamani + Lempuyang",
+          "price": 1650000
+        }
+      ],
+      "halfDay": [
+        {
+          "area": "City Tour/Dinner Ubud/ Blayu",
+          "price": 950000
+        }
+      ],
+      "inOut": [
+        {
+          "area": "Kuta/Tuban",
+          "price": 650000
+        },
+        {
+          "area": "Sanur/Nusa Dua/Jimbaran/Dps/Seminyak",
+          "price": 750000
+        },
+        {
+          "area": "Munggu/ Canggu/Tanah Lot/Ubud/ Pecatu",
+          "price": 850000
+        },
+        {
+          "area": "Candidasa/ Padang Bay/Padma Ubud Hotel",
+          "price": 1100000
+        },
+        {
+          "area": "Lovina/ Tulamben",
+          "price": 1350000
+        },
+        {
+          "area": "Gilimanuk/ Jembrana/ Amed",
+          "price": 1650000
+        }
+      ],
+      "tripBali": [
+        {
+          "area": "Trip Bali Area( Menginap)",
+          "price": 0
+        }
+      ]
+    },
+    "vendor": "MAI BUS"
+  },
+  {
+    "id": 6,
+    "jenisKendaraan": "Bus 35 seat",
+    "keterangan": {
+      "fullDay": [
+        {
+          "area": "Kintamani/Uluwatu/Nusa Penida",
+          "price": 1600000
+        },
+        {
+          "area": "Bedugul-Tanah Lot",
+          "price": 1700000
+        },
+        {
+          "area": "Lempuyang",
+          "price": 1750000
+        },
+        {
+          "area": "Bedugul-Tanah Lot + Lovina",
+          "price": 1750000
+        },
+        {
+          "area": "Kintamani + Lempuyang",
+          "price": 1750000
+        }
+      ],
+      "halfDay": [
+        {
+          "area": "City Tour/Dinner Ubud/ Blayu",
+          "price": 1100000
+        }
+      ],
+      "inOut": [
+        {
+          "area": "Kuta/Tuban",
+          "price": 800000
+        },
+        {
+          "area": "Sanur/Nusa Dua/Jimbaran/Dps/Seminyak",
+          "price": 850000
+        },
+        {
+          "area": "Munggu/ Canggu/Tanah Lot/Ubud/ Pecatu",
+          "price": 950000
+        },
+        {
+          "area": "Candidasa/ Padang Bay/Padma Ubud Hotel",
+          "price": 1100000
+        },
+        {
+          "area": "Lovina/ Tulamben",
+          "price": 1550000
+        },
+        {
+          "area": "Gilimanuk/ Jembrana/ Amed",
+          "price": 1750000
+        }
+      ],
+      "tripBali": [
+        {
+          "area": "Trip Bali Area( Menginap)",
+          "price": 0
+        }
+      ]
+    },
+    "vendor": "MAI BUS"
+  },
+  {
+    "id": 7,
+    "jenisKendaraan": "BIG Bus 48 seat",
+    "keterangan": {
+      "fullDay": [
+        {
+          "area": "Kintamani/Uluwatu/Nusa Penida",
+          "price": 2300000
+        },
+        {
+          "area": "Bedugul-Tanah Lot",
+          "price": 2300000
+        },
+        {
+          "area": "Lempuyang",
+          "price": 2650000
+        },
+        {
+          "area": "Bedugul-Tanah Lot + Lovina",
+          "price": 2650000
+        },
+        {
+          "area": "Kintamani + Lempuyang",
+          "price": 2650000
+        }
+      ],
+      "halfDay": [
+        {
+          "area": "City Tour/Dinner Ubud/ Blayu",
+          "price": 1650000
+        }
+      ],
+      "inOut": [
+        {
+          "area": "Kuta/Tuban",
+          "price": 1000000
+        },
+        {
+          "area": "Sanur/Nusa Dua/Jimbaran/Dps/Seminyak",
+          "price": 1050000
+        },
+        {
+          "area": "Munggu/ Canggu/Tanah Lot/Ubud/ Pecatu",
+          "price": 1150000
+        },
+        {
+          "area": "Candidasa/ Padang Bay/Padma Ubud Hotel",
+          "price": 1950000
+        },
+        {
+          "area": "Lovina/ Tulamben",
+          "price": 2300000
+        },
+        {
+          "area": "Gilimanuk/ Jembrana/ Amed",
+          "price": 2450000
+        }
+      ],
+      "tripBali": [
+        {
+          "area": "Trip Bali Area( Menginap)",
+          "price": 0
+        }
+      ]
+    },
+    "vendor": "MAI BUS"
+  },
+  {
+    "id": 8,
+    "jenisKendaraan": "Bus 29 Seater",
+    "keterangan": {
+      "fullDay": [
+        {
+          "area": "Kintamani/Uluwatu/Nusa Penida",
+          "price": 1400000
+        },
+        {
+          "area": "Bedugul-Tanah Lot",
+          "price": 1500000
+        },
+        {
+          "area": "Lempuyang",
+          "price": 1800000
+        },
+        {
+          "area": "Bedugul-Tanah Lot + Lovina",
+          "price": 1800000
+        },
+        {
+          "area": "Kintamani + Lempuyang",
+          "price": 1800000
+        }
+      ],
+      "halfDay": [
+        {
+          "area": "City Tour/Dinner Ubud/ Blayu",
+          "price": 950000
+        }
+      ],
+      "inOut": [
+        {
+          "area": "Kuta/Tuban",
+          "price": 700000
+        },
+        {
+          "area": "Sanur/Nusa Dua/Jimbaran/Dps/Seminyak",
+          "price": 800000
+        },
+        {
+          "area": "Munggu/ Canggu/Tanah Lot/Ubud/ Pecatu",
+          "price": 0
+        },
+        {
+          "area": "Candidasa/ Padang Bay/Padma Ubud Hotel",
+          "price": 0
+        },
+        {
+          "area": "Lovina/ Tulamben",
+          "price": 0
+        },
+        {
+          "area": "Gilimanuk/ Jembrana/ Amed",
+          "price": 0
+        }
+      ],
+      "tripBali": [
+        {
+          "area": "Trip Bali Area( Menginap)",
+          "price": 0
+        }
+      ]
+    },
+    "vendor": "SEHATI"
+  },
+  {
+    "id": 9,
+    "jenisKendaraan": "Bus 35 Seater",
+    "keterangan": {
+      "fullDay": [
+        {
+          "area": "Kintamani/Uluwatu/Nusa Penida",
+          "price": 1500000
+        },
+        {
+          "area": "Bedugul-Tanah Lot",
+          "price": 1600000
+        },
+        {
+          "area": "Lempuyang",
+          "price": 1700000
+        },
+        {
+          "area": "Bedugul-Tanah Lot + Lovina",
+          "price": 1900000
+        },
+        {
+          "area": "Kintamani + Lempuyang",
+          "price": 1900000
+        }
+      ],
+      "halfDay": [
+        {
+          "area": "City Tour/Dinner Ubud/ Blayu",
+          "price": 1900000
+        }
+      ],
+      "inOut": [
+        {
+          "area": "Kuta/Tuban",
+          "price": 750000
+        },
+        {
+          "area": "Sanur/Nusa Dua/Jimbaran/Dps/Seminyak",
+          "price": 850000
+        },
+        {
+          "area": "Munggu/ Canggu/Tanah Lot/Ubud/ Pecatu",
+          "price": 0
+        },
+        {
+          "area": "Candidasa/ Padang Bay/Padma Ubud Hotel",
+          "price": 0
+        },
+        {
+          "area": "Lovina/ Tulamben",
+          "price": 0
+        },
+        {
+          "area": "Gilimanuk/ Jembrana/ Amed",
+          "price": 0
+        }
+      ],
+      "tripBali": [
+        {
+          "area": "Trip Bali Area( Menginap)",
+          "price": 0
+        }
+      ]
+    },
+    "vendor": "SEHATI"
+  },
+  {
+    "id": 10,
+    "jenisKendaraan": "MOBIL 6 Seater",
+    "keterangan": {
+      "fullDay": [
+        {
+          "area": "Kintamani/Uluwatu/Nusa Penida",
+          "price": 415000
+        },
+        {
+          "area": "Bedugul-Tanah Lot",
+          "price": 450000
+        },
+        {
+          "area": "Lempuyang",
+          "price": 600000
+        },
+        {
+          "area": "Bedugul-Tanah Lot + Lovina",
+          "price": 600000
+        },
+        {
+          "area": "Kintamani + Lempuyang",
+          "price": 700000
+        }
+      ],
+      "halfDay": [
+        {
+          "area": "City Tour/Dinner Ubud/ Blayu",
+          "price": 350000
+        }
+      ],
+      "inOut": [
+        {
+          "area": "Kuta/Tuban",
+          "price": 150000
+        },
+        {
+          "area": "Sanur/Nusa Dua/Jimbaran/Dps/Seminyak",
+          "price": 150000
+        },
+        {
+          "area": "Munggu/ Canggu/Tanah Lot/Ubud/ Pecatu",
+          "price": 250000
+        },
+        {
+          "area": "Candidasa/ Padang Bay/Padma Ubud Hotel",
+          "price": 600000
+        },
+        {
+          "area": "Lovina/ Tulamben",
+          "price": 600000
+        },
+        {
+          "area": "Gilimanuk/ Jembrana/ Amed",
+          "price": 700000
+        }
+      ],
+      "tripBali": [
+        {
+          "area": "Trip Bali Area( Menginap)",
+          "price": 0
+        }
+      ]
+    },
+    "vendor": "KANTOR, ARIK, AGUS"
+  },
+  {
+    "id": 11,
+    "jenisKendaraan": "Hiace",
+    "keterangan": {
+      "fullDay": [
+        {
+          "area": "Kintamani/Uluwatu/Nusa Penida",
+          "price": 900000
+        },
+        {
+          "area": "Bedugul-Tanah Lot",
+          "price": 900000
+        },
+        {
+          "area": "Lempuyang",
+          "price": 1200000
+        },
+        {
+          "area": "Bedugul-Tanah Lot + Lovina",
+          "price": 1200000
+        },
+        {
+          "area": "Kintamani + Lempuyang",
+          "price": 1200000
+        }
+      ],
+      "halfDay": [
+        {
+          "area": "City Tour/Dinner Ubud/ Blayu",
+          "price": 700000
+        }
+      ],
+      "inOut": [
+        {
+          "area": "Kuta/Tuban",
+          "price": 400000
+        },
+        {
+          "area": "Sanur/Nusa Dua/Jimbaran/Dps/Seminyak",
+          "price": 400000
+        },
+        {
+          "area": "Munggu/ Canggu/Tanah Lot/Ubud/ Pecatu",
+          "price": 0
+        },
+        {
+          "area": "Candidasa/ Padang Bay/Padma Ubud Hotel",
+          "price": 0
+        },
+        {
+          "area": "Lovina/ Tulamben",
+          "price": 0
+        },
+        {
+          "area": "Gilimanuk/ Jembrana/ Amed",
+          "price": 1200000
+        }
+      ],
+      "tripBali": [
+        {
+          "area": "Trip Bali Area( Menginap)",
+          "price": 0
+        }
+      ]
+    },
+    "vendor": "VENDOR JONI"
+  },
+  {
+    "id": 12,
+    "jenisKendaraan": "Hiace",
+    "keterangan": {
+      "fullDay": [
+        {
+          "area": "Kintamani/Uluwatu/Nusa Penida",
+          "price": 900000
+        },
+        {
+          "area": "Bedugul-Tanah Lot",
+          "price": 900000
+        },
+        {
+          "area": "Lempuyang",
+          "price": 1200000
+        },
+        {
+          "area": "Bedugul-Tanah Lot + Lovina",
+          "price": 1200000
+        },
+        {
+          "area": "Kintamani + Lempuyang",
+          "price": 1200000
+        }
+      ],
+      "halfDay": [
+        {
+          "area": "City Tour/Dinner Ubud/ Blayu",
+          "price": 700000
+        }
+      ],
+      "inOut": [
+        {
+          "area": "Kuta/Tuban",
+          "price": 400000
+        },
+        {
+          "area": "Sanur/Nusa Dua/Jimbaran/Dps/Seminyak",
+          "price": 400000
+        },
+        {
+          "area": "Munggu/ Canggu/Tanah Lot/Ubud/ Pecatu",
+          "price": 0
+        },
+        {
+          "area": "Candidasa/ Padang Bay/Padma Ubud Hotel",
+          "price": 0
+        },
+        {
+          "area": "Lovina/ Tulamben",
+          "price": 0
+        },
+        {
+          "area": "Gilimanuk/ Jembrana/ Amed",
+          "price": 0
+        }
+      ],
+      "tripBali": [
+        {
+          "area": "Trip Bali Area( Menginap)",
+          "price": 0
+        }
+      ]
+    },
+    "vendor": "VENDOR AGUS"
+  }
+]
