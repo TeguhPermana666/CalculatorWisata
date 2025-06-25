@@ -43,25 +43,22 @@ const CalculatorContent = () => {
 
   return (
     <>
-      <Container maxW="full" bg="black" py={10} px={{ base: 4, md: 12 }}>
-        <Heading size="lg" mb={8} color="white" textAlign="center">
-          Kalkulator Harga Paket Wisata
-        </Heading>
-
-        <VStack spacing={10} align="stretch" width="100%">
-          <AccommodationSelector
-            onHotelChange={updateHotels}
-            onVillaChange={updateVillas}
+      <Container maxW="5xl" py={10} bg="gray.900" color="gray.100" minH="100vh">
+        <Heading mb={6}>Form Paket Tour</Heading>
+        <VStack spacing={8} align="stretch">
+          <TourHeaderForm onChange={setTourInfo} />
+          <RestaurantForm onChange={setRestaurants} />
+          <VisitorCategoryForm onChange={setVisitorData} />
+          <PriceSummaryBox
+            tourInfo={tourInfo}
+            restaurants={restaurants}
+            visitorData={visitorData}
           />
-          <TourSelector onAdd={addTour} onRemove={removeTour} />
-          <AdditionalCostForm onAdd={addExtra} onRemove={removeExtra} />
-          <PriceBreakdownTable
-            hotels={hotels}
-            villas={villas}
-            tours={tours}
-            extras={extras}
-          />
-
+          <Box>
+            <Button colorScheme="blue" onClick={handleSubmit}>
+              Simpan Paket
+            </Button>
+          </Box>
         </VStack>
       </Container>
 
