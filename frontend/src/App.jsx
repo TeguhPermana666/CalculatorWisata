@@ -1,21 +1,48 @@
-import { Routes, Route, Navigate } from "react-router-dom"
-import CalculatorPage from "./pages/CalculatorPage"
-import TourPackagePage from "./pages/TourPackages"
-import { Box, useColorModeValue } from "@chakra-ui/react"
+import { Routes, Route, Navigate } from "react-router-dom";
+import TourPackagePage from "./pages/TourPackages";
+import AkomodasiPage from "./pages/AkomodasiPage";
+import CheckoutPage from "./pages/CheckoutPage"; // <- jika sudah punya
+import Layout from "./components/Layout";
+import TransportPage from "./pages/TransportPage";
 
 function App() {
-  const bg = useColorModeValue("gray.50", "gray.900") // light vs dark
-
   return (
-    <Box minH="100vh" bg={bg}>
-      <Routes>
-        <Route path="/" element={<Navigate to="/calculator" />} />
-        <Route path="/calculator" element={<CalculatorPage />} />
-        <Route path="tour-packages" element={<TourPackagePage />} />
-      </Routes>
-    </Box>
-  )
+    <Routes>
+      <Route path="/" element={<Navigate to="/calculator" />} />
+      <Route
+        path="/calculator"
+        element={
+          <Layout>
+            <AkomodasiPage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/tour-packages"
+        element={
+          <Layout>
+            <TourPackagePage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/transport"
+        element={
+          <Layout>
+            <TransportPage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/checkout"
+        element={
+          <Layout>
+            <CheckoutPage />
+          </Layout>
+        }
+      />
+    </Routes>
+  );
 }
 
-
-export default App
+export default App;
